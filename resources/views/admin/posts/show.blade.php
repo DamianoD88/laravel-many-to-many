@@ -7,6 +7,12 @@
   </div>
   <div class="card-body">
     <p class="card-text">{{$post->description}}</p>
+    <h4>Tags</h4>
+    @forelse ($post->tags as $tag)
+        <span class="badge badge-warning">{{ $tag->name }}</span>
+    @empty
+        Nessun tag
+    @endforelse
   </div>
 </div>
 <div class="my-4">

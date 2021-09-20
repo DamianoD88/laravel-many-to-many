@@ -86,7 +86,8 @@ class PostController extends Controller
     public function show($slug)
     {
         $post = Post::where('slug', $slug)->first();
-        return view('admin.posts.show', compact('post'));
+        $tags= Tag::all();
+        return view('admin.posts.show', compact('post', 'tags'));
     }
 
     /**
