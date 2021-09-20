@@ -18,8 +18,10 @@ Route::get('/', 'HomeController@index')->name('homepage');
 Auth::routes();
 
 Route::middleware('auth')->namespace('Admin')->prefix('admin')->name('admin.')
-        ->group(function() {
-            //pagina di atterraggio dopo il login (con il prefisso, l'url e '/admin') 
-            Route::get('/', 'HomeController@index')->name('index');
-            Route::resource('/posts', 'PostController');
+    ->group(function() {
+ 
+        
+    Route::get('/', 'HomeController@index')->name('index');
+    Route::resource('/posts', 'PostController');
+    Route::resource('/categories', 'CategoryController');
 });

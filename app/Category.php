@@ -6,8 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
-    // protected $table = 'categories';
-    public function posts(){
-        return $this->hasMany('App\post');
+    protected $fillable = [
+        'name',
+        'slug'
+    ];
+
+    public function categoryPost(){
+        return $this->hasMany('App\Post');
     }
 }

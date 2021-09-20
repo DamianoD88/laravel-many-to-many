@@ -1,19 +1,24 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
-        <h2>Product details</h2>
-        <div class="card">
-            <div class="card-header">
-                {{ $post->title }}
-            </div>
-            <div class="card-body">
-                <h5 class="card-title"> {{ $post->slug }} </h5>
-                <p class="card-text"> {{ $post->content }} </p>
-            </div>
-        </div>
-        <div class="mt-3">
-            <a href="{{ route('admin.posts.index') }}" class="btn btn-primary">Retry</a>
-        </div>
-    </div>
+<div class="card">
+  <div class="card-header">
+    {{$post->title}}
+  </div>
+  <div class="card-body">
+    <p class="card-text">{{$post->description}}</p>
+  </div>
+</div>
+<div class="my-4">
+  <a href="{{url()->previous()}}" class="btn btn-outline-dark"><i class="fas fa-arrow-left me-2"></i> Torna indietro</a>
+  <a href="{{route('admin.posts.edit', $post->id)}}" class="btn btn-outline-secondary"><i class="far fa-edit me-2"></i>Edit</a>
+  <form action="{{route('admin.posts.destroy', $post->id)}}" method="POST" class="d-inline-block">
+    
+    @csrf
+    @method('DELETE')
+
+    
+    <button type="submit" class="btn btn-outline-danger" onclick="return confirm('Sei sicuro di voler cancellare l\'elemento?')"><i class="far fa-trash-alt me-2"></i>Delete</button>
+  </form>
+</div>
 @endsection

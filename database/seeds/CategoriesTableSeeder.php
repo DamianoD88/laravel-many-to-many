@@ -13,18 +13,16 @@ class CategoriesTableSeeder extends Seeder
      */
     public function run()
     {
-        $categories = ['Html', 'CSS', 'Php', 'JavaScript', 'Vue Cli'];
+        //array di dati
+        $categories = ['Html', 'CSS', 'JS', 'Python'];
 
         foreach($categories as $category){
-            //Creazione dell'istanza
-            $newCategory = new Category();
+            $newCategories = new Category();
+            $newCategories->name = $category;
+            $slug = Str::slug($category, '-');
+            $newCategories->slug = $slug;
 
-            //dati
-            $newCategory->name = $category;
-            $newCategory->slug = Str::slug($category, '-');
-
-            //salvataggio dati
-            $newCategory->save();
+            $newCategories->save();
         }
     }
 }

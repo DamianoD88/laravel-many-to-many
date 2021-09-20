@@ -14,7 +14,7 @@ class UpdatePostsTable extends Migration
     public function up()
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->unsignedBigInteger('category_id')->nullable()->after('id');
+            $table->unsignedBigInteger('category_id')->after('id')->nullable();
 
             $table->foreign('category_id')
                   ->references('id')
@@ -31,8 +31,10 @@ class UpdatePostsTable extends Migration
     public function down()
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->dropForeign('category_id');
+            // in caso di rollback cancello la proprietà di foreign_key alla colonna category_id 
+            $table->dropForeign('posts_category_id_foreign');
+            // successivamente cancello la colonna category_id
+            $table->dropColumn('category_id');
         });
-
     }
 }
