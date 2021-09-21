@@ -1,6 +1,26 @@
 @extends('layouts.app')
 
 @section('content')
+  <div class="container">
+    <h2>Products details</h2>
+    <div class="card">
+      <div class="card-header">
+        {{ $post->title }}
+      </div>
+      <div class="card-body">
+        <h3>
+          Category : 
+          @if ($post->category)
+          {{ $post->category->name }}
+          @endif
+              
+          @endif
+        </h3>
+        <h5 class="card-title" > {{ $post->slug }} </h5>
+        <p class="card-text" > {{ $post->content }} </p>
+      </div>
+    </div>
+  </div>
   <h2>{{$category->name}}</h2>
 
   @if ($category->categoryPost->isNotEmpty())

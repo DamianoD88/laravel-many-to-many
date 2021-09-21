@@ -13,7 +13,7 @@ class TagSeeder extends Seeder
    */
   public function run()
   {
-    $seedTags = ['Front End','Back End','Database','User Experience'];
+    $seedTags = ['Front End','Back End','Database','User Experience','Laravel','Vue'];
 
     foreach ($seedTags as $tag) {
 
